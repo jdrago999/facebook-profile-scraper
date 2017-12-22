@@ -27,14 +27,16 @@ class FacebookProfileScraper
     }
   }
 
-  attr_accessor :parsed_page, :response, :profile_url
+  attr_accessor :parsed_page, :response, :profile_url, :username
 
   def initialize(facebook_profile_url)
     begin
       self.response = Net::HTTP.get_response(URI(facebook_profile_url))
       self.profile_url = facebook_profile_url
+      self.username = URI(profile_url).path.split('/').last
       if response.code.to_i == 302
         self.profile_url = response.to_hash['location'].first
+        self.username = URI(profile_url).path.split('/').last
         self.response = Net::HTTP.get_response(URI(profile_url))
       end
       self.parsed_page = Nokogiri::HTML(response.body)

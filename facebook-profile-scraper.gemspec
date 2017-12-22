@@ -1,3 +1,4 @@
+
 Gem::Specification.new do |s|
   s.name        = 'facebook-profile-scraper'
   s.version     = '1.0.0'
@@ -9,8 +10,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/facebook-profile-scraper.rb"]
   s.homepage    = 'https://github.com/kjellberg/facebook-profile-scraper'
   s.license     = 'MIT'
-
-  s.add_dependency 'httparty'
   s.add_dependency 'nokogiri'
-
 end
